@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  wpdb:
+    image: postgres:18.1-alpine
+    container_name: wpdb
+    networks:
+      - dc-action
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: ipemis_orcl
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - wpdb_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  wp_writable:
+    build: .
+    container_name: wp_writable
+    networks:
+      - dc-action
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: wpdb:5432
+      WORDPRESS_DB_USER: ipemis_orcl
+      WORDPRESS_DB_PASSWORD: secret
+      WORDPRESS_DB_NAME: postgres
+    volumes:
+      - wp_data:/var/www/html
+    depends_on:
+      - wpdb
+    restart: unless-stopped
+
+networks:
+  dc-action:
+    external: true
+
+volumes:
+  wpdb_data:
+  wp_data:
