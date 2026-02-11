@@ -1,0 +1,1 @@
+i run postgressql in dc-action netowrk , wp_writable php container , see the doceker logs when i give same credential it gives error

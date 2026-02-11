@@ -1,0 +1,54 @@
+## 📋 **Next Steps - Choose Your Path**
+
+You currently have PostgreSQL running. Pick one solution:
+
+### **🟢 Option 1: MySQL (Easiest & Recommended)**
+
+```bash
+# 1. Stop and remove current containers
+docker stop wpdb wp_writable
+docker rm wpdb wp_writable
+
+# 2. Start MySQL setup
+docker-compose up -d
+
+# 3. Open browser to http://localhost:8000
+# 4. Use these credentials:
+#    Database Name: wordpress
+#    Username: ipemis_orcl
+#    Password: secret
+#    Database Host: wpdb  ← IMPORTANT: Use "wpdb" not "localhost"
+#    Table Prefix: wp_
+```
+
+### **🔵 Option 2: PostgreSQL (Advanced)**
+
+```bash
+# 1. Stop current containers
+docker stop wpdb wp_writable
+docker rm wpdb wp_writable
+
+# 2. Build custom WordPress image
+docker-compose -f docker-compose-postgres.yml build
+
+# 3. Start PostgreSQL setup
+docker-compose -f docker-compose-postgres.yml up -d
+
+# 4. Open browser to http://localhost:8000
+# 5. Use these credentials:
+#    Database Name: postgres
+#    Username: ipemis_orcl
+#    Password: secret
+#    Database Host: wpdb  ← IMPORTANT: Use "wpdb" not "localhost"
+#    Table Prefix: wp_
+```
+
+---
+
+## ⚠️ **Critical Points**
+
+1. **Never use `localhost`** - Always use `wpdb` (container name)
+2. **MySQL is recommended** - Better WordPress compatibility
+3. **PostgreSQL needs custom image** - Standard WordPress doesn't support it
+
+Which option would you like to proceed with?

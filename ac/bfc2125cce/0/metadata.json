@@ -1,0 +1,23 @@
+{
+  "cli_version": "0.4.2",
+  "checkpoint_id": "acbfc2125cce",
+  "session_id": "eabed46d-315c-440e-b26f-70360d0af044",
+  "strategy": "auto-commit",
+  "created_at": "2026-02-11T15:56:29.418948Z",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "Dockerfile",
+    "docker-compose-postgres.yml",
+    "docker-compose.yml",
+    "test-connection.sh"
+  ],
+  "agent": "Claude Code",
+  "token_usage": {
+    "input_tokens": 66,
+    "cache_creation_tokens": 72728,
+    "cache_read_tokens": 474025,
+    "output_tokens": 12,
+    "api_call_count": 8
+  }
+}
